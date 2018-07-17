@@ -1,8 +1,5 @@
 import { applyMiddleware, compose, createStore, GenericStoreEnhancer } from 'redux';
-import createBrowserHistory from 'history/createBrowserHistory';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
-import thunk from 'redux-thunk';
-import { rootReducer, RootState } from '@App/store/reducers';
+import createSagaMiddleware from 'redux-saga';
 
 declare global {
   interface Window {
@@ -11,13 +8,25 @@ declare global {
   }
 }
 
-export const history = createBrowserHistory();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const sagaMiddleware = createSagaMiddleware();
 
-export default function configureStore(initialState?: RootState) {
-  return createStore(
-    connectRouter(history)(rootReducer),
-    initialState,
-    composeEnhancers(applyMiddleware(thunk, routerMiddleware(history)))
+export default function configureStore(initialState?: object) {
+  const store = createStore(
+    s => s,
+    {},
+    composeEnhancers(applyMiddleware(sagaMiddleware))
   );
+
+  sagaMiddleware.run(dummySaga);
+
+  return store;
+}
+
+const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+
+function* dummySaga() {
+  console.info("begin saga");
+  yield delay(5000);
+  console.info("end saga");
 }

@@ -1,13 +1,8 @@
 import * as React from 'react';
 import * as css from './App.css';
-import { ConnectedRouter } from 'connected-react-router';
-import { history } from '@App/store';
-import { RootState } from '@App/store/reducers';
-import { connect, Dispatch } from 'react-redux';
-import { ActionCreatorsMapObject, bindActionCreators } from 'redux';
-import { counterActions } from '@App/store/actions/counter/counterActions';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import { MouseEvent } from 'react';
-const logo = require('./logo.svg');
 interface AppProps {
 
 }
@@ -36,32 +31,31 @@ class App extends React.Component<AppProps, AppState> {
 
   public render() {
     return (
-      <ConnectedRouter history={history}>
-        <div className={css.App}>
-          <header className={css.appHeader}>
-            <img src={logo} className={css.appLogo} alt="logo"/>
-            <h1 className={css.appTitle}>Welcome to React</h1>
-          </header>
-          <p className={css.appIntro}>
-            To get started, edit <code>src/app/App.tsx</code> and save to reload.
-          </p>
-          <button className={css.button} onClick={this.onButtonClick}>Click to test ACTION</button>
-          <span className={css.counter}>{this.props.counter}</span>
-        </div>
-      </ConnectedRouter>
+      <div className={css.App}>
+        <header className={css.appHeader}>
+          <h1 className={css.appTitle}>Welcome to React</h1>
+        </header>
+        <p className={css.appIntro}>
+          To get started, edit <code>src/app/App.tsx</code> and save to reload.
+        </p>
+        <button className={css.button} onClick={this.onButtonClick}>Click to test ACTION</button>
+        <span className={css.counter}>{this.props.counter}</span>
+      </div>
     );
   }
 }
 
-function mapStateToProps(state: RootState, ownProps: object) {
+function mapStateToProps(state: object, ownProps: object) {
   return {
-    counter: state.counter
+    counter: 7
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch<RootState>) {
+function mapDispatchToProps(dispatch: Dispatch<object>) {
   return {
-    actions: bindActionCreators<ActionCreatorsMapObject>(counterActions, dispatch)
+    actions: {
+      add: (arg: number) => { return; }
+    }
   };
 }
 

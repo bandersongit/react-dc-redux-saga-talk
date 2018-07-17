@@ -33,14 +33,7 @@
         "no-arg": true,
         "no-bitwise": true,
         "no-console": [
-            true,
-            "log",
-            "error",
-            "debug",
-            "info",
-            "time",
-            "timeEnd",
-            "trace"
+            false
         ],
         "no-consecutive-blank-lines": true,
         "no-construct": true,
@@ -61,7 +54,6 @@
             "check-open-brace",
             "check-whitespace"
         ],
-        "quotemark": [true, "single", "jsx-double"],
         "radix": true,
         "semicolon": [true, "always"],
         "switch-default": true,
