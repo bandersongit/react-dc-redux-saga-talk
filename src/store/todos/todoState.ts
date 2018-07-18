@@ -1,16 +1,20 @@
-import { Todo } from '@App/store/todos/todo';
+export interface Todo {
+    task: string;
+    isCompleted: boolean;
+    id: string;
+}
 
-interface LoadedTodos {
+export type TodoState = ILoadedTodoState | ILoadingTodoState;
+
+export interface ILoadedTodoState {
     todos: Todo[];
     isLoading: false;
 }
 
-interface LoadingTodos {
+export interface ILoadingTodoState {
     isLoading: true;
 }
 
-export type TodoState = LoadedTodos | LoadingTodos;
-
-export const initialTodoState: LoadingTodos = {
+export const initialTodoState: TodoState = {
     isLoading: true
 };

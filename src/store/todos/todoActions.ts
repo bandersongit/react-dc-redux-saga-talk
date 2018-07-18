@@ -1,5 +1,5 @@
-import { Todo } from './todo';
 import { makePayloadActionCreator } from '@App/store/actionTypeHelpers';
+import { Todo } from '@App/store/todos/todoState';
 
 export enum TodoActions {
     LOAD_TODOS = "LOAD_TODOS",
@@ -8,5 +8,5 @@ export enum TodoActions {
 }
 
 export const loadTodos = makePayloadActionCreator<TodoActions.LOAD_TODOS, { todos: Todo[] }>(TodoActions.LOAD_TODOS);
-export const addTodo = makePayloadActionCreator<TodoActions.ADD_TODO, { todo: Todo }>(TodoActions.ADD_TODO);
-export const removeTodo = makePayloadActionCreator<TodoActions.REMOVE_TODO, { todo: Todo }>(TodoActions.REMOVE_TODO);
+export const addTodo = makePayloadActionCreator<TodoActions.ADD_TODO, { task: string }>(TodoActions.ADD_TODO);
+export const removeTodo = makePayloadActionCreator<TodoActions.REMOVE_TODO, { id: string }>(TodoActions.REMOVE_TODO);
