@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as css from './App.css';
+import * as css from '@App/components/app/App.css';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { MouseEvent } from 'react';
