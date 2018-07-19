@@ -1,9 +1,8 @@
 import * as React from 'react';
 import TodoContainer from './todoContainer';
 
-interface Props {
+export interface Props {
     todos: { task: string, isCompleted: boolean, id: string }[];
-    addTodo: (task: string) => void;
 }
 
 export class TodoList extends React.PureComponent<Props> {

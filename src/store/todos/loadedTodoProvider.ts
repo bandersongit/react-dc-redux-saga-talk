@@ -16,7 +16,7 @@ export class LoadedTodoProvider implements ITodoReducer, ILoadedTodoState {
             isCompleted: false,
             id: uniqueId(),
             task
-        }
+        };
         return new LoadedTodoProvider(this.todos.concat(newTodo));
     }
     removeTodo = (id: string) => {
