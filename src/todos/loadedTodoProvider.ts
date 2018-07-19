@@ -1,6 +1,5 @@
 import { ITodoReducer } from "@App/todos/todoReducer";
 import { ILoadedTodoState, Todo } from "@App/todos/todoState";
-import { uniqueId } from 'lodash';
 
 export class LoadedTodoProvider implements ITodoReducer, ILoadedTodoState {
     public todos: Todo[];
@@ -16,13 +15,8 @@ export class LoadedTodoProvider implements ITodoReducer, ILoadedTodoState {
             ? {...t, isCompleted: !t.isCompleted}
             : t));
     }
-    addTodo = (task: string) => {
-        let newTodo: Todo = {
-            isCompleted: false,
-            id: uniqueId(),
-            task
-        };
-        return new LoadedTodoProvider(this.todos.concat(newTodo));
+    addTodo = (todo: Todo) => {
+        return new LoadedTodoProvider(this.todos.concat(todo));
     }
     removeTodo = (id: string) => {
         return new LoadedTodoProvider(this.todos.filter(t => t.id !== id));

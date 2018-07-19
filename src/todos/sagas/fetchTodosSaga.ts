@@ -1,14 +1,14 @@
 import { put, call } from 'redux-saga/effects';
 import { loadTodos } from '@App/todos/todoActions';
-
-const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+import { uniqueId } from 'lodash';
+import { delay } from 'redux-saga';
 
 export function* fetchTodos() {
-    yield call(delay, 2000);
+    yield call(delay, 500);
     yield put(loadTodos({
         todos: [
-            {task: "write app", isCompleted: false, id: "42"},
-            {task: "do some styles", isCompleted: false, id: "23"},
+            { task: "write app", isCompleted: false, id: uniqueId() },
+            { task: "do some styles", isCompleted: false, id: uniqueId() },
         ]
     }));
 }

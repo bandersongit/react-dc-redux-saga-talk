@@ -6,7 +6,7 @@ import { LoadedTodoProvider } from "@App/todos/loadedTodoProvider";
 
 export interface ITodoReducer {
     loadTodos: (todos: Todo[]) => TodoState;
-    addTodo: (task: string) => TodoState;
+    addTodo: (todo: Todo) => TodoState;
     removeTodo: (id: string) => TodoState;
     toggleCompletion: (id: string) => TodoState;
 }
@@ -22,7 +22,7 @@ export function todoReducer(state: TodoState = initialTodoState, action: AppActi
         case TodoActions.LOAD_TODOS:
            return reducer.loadTodos(action.payload.todos);
         case TodoActions.ADD_TODO:
-            return reducer.addTodo(action.payload.task);
+            return reducer.addTodo(action.payload.todo);
         case TodoActions.REMOVE_TODO:
             return reducer.removeTodo(action.payload.id);
         case TodoActions.TOGGLE_COMPLETION:
