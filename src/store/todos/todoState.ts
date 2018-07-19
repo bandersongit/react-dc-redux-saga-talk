@@ -1,18 +1,18 @@
 export interface Todo {
-    task: string;
-    isCompleted: boolean;
-    id: string;
+    readonly task: string;
+    readonly isCompleted: boolean;
+    readonly id: string;
 }
 
 export type TodoState = ILoadedTodoState | ILoadingTodoState;
 
 export interface ILoadedTodoState {
-    todos: Todo[];
-    isLoading: false;
+    readonly todos: Todo[];
+    readonly isLoading: false;
 }
 
 export interface ILoadingTodoState {
-    isLoading: true;
+    readonly isLoading: true;
 }
 
 export const initialTodoState: TodoState = {
