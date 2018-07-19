@@ -7,11 +7,24 @@ interface AppProps {
   isLoading: boolean; 
 }
 
+const appStyles: React.CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+};
+
 class App extends React.Component<AppProps> {
   public render() {
-    return this.props.isLoading
-      ? <div>Loading....</div>
-      : <TodoListContainer />;
+    return (
+      <div style={appStyles}>
+        <h1>Async Todo MVC</h1>
+        { 
+          this.props.isLoading
+            ? "Loading..."
+            : <TodoListContainer />
+        }
+      </div> 
+    );
   }
 }
 

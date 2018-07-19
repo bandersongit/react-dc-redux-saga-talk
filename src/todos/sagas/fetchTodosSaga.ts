@@ -6,6 +6,9 @@ const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 export function* fetchTodos() {
     yield call(delay, 2000);
     yield put(loadTodos({
-        todos: [{task: "write app", isCompleted: false, id: "42"}]
+        todos: [
+            {task: "write app", isCompleted: false, id: "42"},
+            {task: "do some styles", isCompleted: false, id: "23"},
+        ]
     }));
 }

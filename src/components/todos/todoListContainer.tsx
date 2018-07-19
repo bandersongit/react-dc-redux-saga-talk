@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { TodoList, Props } from './todoList';
+import { TodoList, Props } from '@App/components/todos/todoList';
 import { State } from '@App/store/appState';
 
 const mapStateToProps = (state: State): Partial<Props> => {

@@ -7,13 +7,21 @@ export interface Props {
     removeTodo: VoidFunction;
 }
 
+const todoStyles: React.CSSProperties = {
+    display: "flex",
+    justifyContent: "space-between",
+    margin: "0.5em"
+};
+
 export class Todo extends React.PureComponent<Props> {
     render() {
         return (
-            <div>
-                <input type="checkbox" checked={this.props.isCompleted} onClick={this.props.toggleCompletion}/>
-                <p>{this.props.task}</p>
-                <h1 onClick={this.props.removeTodo}>X</h1>
+            <div style={todoStyles}>
+                <label>
+                    <input type="checkbox" checked={this.props.isCompleted} onClick={this.props.toggleCompletion}/>
+                    {this.props.task}
+                </label>
+                <button onClick={this.props.removeTodo} style={{ marginLeft: "1em" }}>Remove</button>
             </div>
         );
     }

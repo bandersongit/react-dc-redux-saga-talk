@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import { Todo } from './todo';
+import { Todo } from '@App/components/todos/todo';
 import { Dispatch } from 'redux';
 import { AppActionType } from '@App/store/actions';
-import { Props } from './todo';
+import { Props } from '@App/components/todos/todo';
 import { removeTodo } from '@App/todos/todoActions';
 
 interface OwnProps {
