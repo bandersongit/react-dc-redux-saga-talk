@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TodoContainer from './todoContainer';
+import TodoContainer from '@App/components/todos/todoContainer';
 
 export interface Props {
     todos: { task: string, isCompleted: boolean, id: string }[];

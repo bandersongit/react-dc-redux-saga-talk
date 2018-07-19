@@ -2,6 +2,7 @@ import { applyMiddleware, compose, createStore, GenericStoreEnhancer } from 'red
 import createSagaMiddleware from 'redux-saga';
 import { State, initialState } from '@App/store/appState';
 import { rootReducer } from '@App/store/rootReducer';
+import { rootSaga } from '@App/store/rootSaga';
 
 declare global {
   interface Window {
@@ -20,15 +21,7 @@ export default function configureStore(state: State = initialState) {
     composeEnhancers(applyMiddleware(sagaMiddleware))
   );
 
-  sagaMiddleware.run(dummySaga);
+  sagaMiddleware.run(rootSaga);
 
   return store;
-}
-
-const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
-
-function* dummySaga() {
-  console.info("begin saga");
-  yield delay(5000);
-  console.info("end saga");
 }
