@@ -3,7 +3,7 @@ import { uniqueId } from "lodash";
 import { Todo } from "@App/todos/todoState";
 
 export async function createServerTodo(task: string): Promise<Todo> {
-    await delay(2000);
+    await delay(100);
     return {
         task,
         isCompleted: false,
