@@ -11,6 +11,11 @@ export class LoadedTodoProvider implements ITodoReducer, ILoadedTodoState {
     loadTodos = () => {
         throw "cannot load todos multiple times";
     }
+    toggleCompletion = (id: string) => {
+        return new LoadedTodoProvider(this.todos.map(t => t.id === id
+            ? {...t, isCompleted: !t.isCompleted}
+            : t));
+    }
     addTodo = (task: string) => {
         let newTodo: Todo = {
             isCompleted: false,

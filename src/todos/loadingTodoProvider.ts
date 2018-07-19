@@ -7,10 +7,13 @@ export class LoadingTodoProvider implements ITodoReducer, ILoadingTodoState {
     loadTodos: (todos: Todo[]) => TodoState = (todos) => {
         return new LoadedTodoProvider(todos);
     }
-    addTodo: (task: string) => TodoState = () => {
+    toggleCompletion = () => { 
+        throw "cannot toggle completion of todos before todos have loaded!";
+    }
+    addTodo = () => {
         throw "cannot add todos befoer todos have loaded";
     }
-    removeTodo: (id: string) => TodoState = () => {
+    removeTodo = () => {
         throw "cannot remove todos before todos have loaded";
     }
 }

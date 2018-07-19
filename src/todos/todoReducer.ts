@@ -8,6 +8,7 @@ export interface ITodoReducer {
     loadTodos: (todos: Todo[]) => TodoState;
     addTodo: (task: string) => TodoState;
     removeTodo: (id: string) => TodoState;
+    toggleCompletion: (id: string) => TodoState;
 }
 
 export function todoReducer(state: TodoState = initialTodoState, action: AppActionType) {
@@ -24,6 +25,8 @@ export function todoReducer(state: TodoState = initialTodoState, action: AppActi
             return reducer.addTodo(action.payload.task);
         case TodoActions.REMOVE_TODO:
             return reducer.removeTodo(action.payload.id);
+        case TodoActions.TOGGLE_COMPLETION:
+            return reducer.toggleCompletion(action.payload.id);
         default:
             return state;
     }

@@ -3,7 +3,7 @@ import { Todo } from '@App/components/todos/todo';
 import { Dispatch } from 'redux';
 import { AppActionType } from '@App/store/actions';
 import { Props } from '@App/components/todos/todo';
-import { removeTodo } from '@App/todos/todoActions';
+import { removeTodo, toggleCompletion } from '@App/todos/todoActions';
 
 interface OwnProps {
     id: string;
@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch: Dispatch<AppActionType>, ownProps: OwnProp
         task: ownProps.task,
         isCompleted: ownProps.isCompleted,
         removeTodo: () => dispatch(removeTodo({ id: ownProps.id })),
+        toggleCompletion: () => dispatch(toggleCompletion({ id: ownProps.id }))
     };
 };
 
