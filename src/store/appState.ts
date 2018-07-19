@@ -1,4 +1,4 @@
-import { TodoState, initialTodoState } from "@App/store/todos/todoState";
+import { TodoState, initialTodoState } from "@App/todos/todoState";
 
 export type State = {
     readonly todos: TodoState;

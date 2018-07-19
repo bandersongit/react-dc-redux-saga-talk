@@ -1,6 +1,6 @@
-import { ITodoReducer } from '@App/store/todos/todoReducer';
-import { ILoadingTodoState, Todo, TodoState } from '@App/store/todos/todoState';
-import { LoadedTodoProvider } from '@App/store/todos/loadedTodoProvider';
+import { ITodoReducer } from '@App/todos/todoReducer';
+import { ILoadingTodoState, Todo, TodoState } from '@App/todos/todoState';
+import { LoadedTodoProvider } from '@App/todos/loadedTodoProvider';
 
 export class LoadingTodoProvider implements ITodoReducer, ILoadingTodoState {
     isLoading: true;

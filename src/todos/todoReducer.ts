@@ -1,8 +1,8 @@
-import { TodoState, initialTodoState, Todo } from "@App/store/todos/todoState";
+import { TodoState, initialTodoState, Todo } from "@App/todos/todoState";
 import { AppActionType } from "@App/store/actions";
-import { TodoActions } from "@App/store/todos/todoActions";
-import { LoadingTodoProvider } from "@App/store/todos/loadingTodoProvider";
-import { LoadedTodoProvider } from "@App/store/todos/loadedTodoProvider";
+import { TodoActions } from "@App/todos/todoActions";
+import { LoadingTodoProvider } from "@App/todos/loadingTodoProvider";
+import { LoadedTodoProvider } from "@App/todos/loadedTodoProvider";
 
 export interface ITodoReducer {
     loadTodos: (todos: Todo[]) => TodoState;

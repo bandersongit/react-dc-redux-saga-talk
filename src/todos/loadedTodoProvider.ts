@@ -1,5 +1,5 @@
-import { ITodoReducer } from "@App/store/todos/todoReducer";
-import { ILoadedTodoState, Todo } from "@App/store/todos/todoState";
+import { ITodoReducer } from "@App/todos/todoReducer";
+import { ILoadedTodoState, Todo } from "@App/todos/todoState";
 import { uniqueId } from 'lodash';
 
 export class LoadedTodoProvider implements ITodoReducer, ILoadedTodoState {

@@ -1,5 +1,5 @@
 import { makePayloadActionCreator } from '@App/store/actionTypeHelpers';
-import { Todo } from '@App/store/todos/todoState';
+import { Todo } from '@App/todos/todoState';
 
 export enum TodoActions {
     LOAD_TODOS = "LOAD_TODOS",

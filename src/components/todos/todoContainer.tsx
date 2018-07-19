@@ -3,7 +3,7 @@ import { Todo } from './todo';
 import { Dispatch } from 'redux';
 import { AppActionType } from '@App/store/actions';
 import { Props } from './todo';
-import { removeTodo } from '@App/store/todos/todoActions';
+import { removeTodo } from '@App/todos/todoActions';
 
 interface OwnProps {
     id: string;
