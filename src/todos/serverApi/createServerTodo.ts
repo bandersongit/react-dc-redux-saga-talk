@@ -8,5 +8,5 @@ export async function createServerTodo(task: string): Promise<Todo> {
         task,
         isCompleted: false,
         id: uniqueId()
-    }
+    };
 }

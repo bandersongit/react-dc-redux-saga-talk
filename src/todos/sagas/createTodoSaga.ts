@@ -3,7 +3,7 @@ import { TodoActions, addTodo, createTodo } from "@App/todos/todoActions";
 import { createServerTodo } from "@App/todos/serverApi/createServerTodo";
 
 export function* createTodoSaga() {
-    yield takeEvery(TodoActions.CREATE_TODO, requestTodo)
+    yield takeEvery(TodoActions.CREATE_TODO, requestTodo);
 }
 
 export function* requestTodo(action: ReturnType<typeof createTodo>) {
