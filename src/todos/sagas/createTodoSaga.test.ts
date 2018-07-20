@@ -14,7 +14,7 @@ describe("create todo saga", () => {
             dispatch: (a: AppActionType) => {
                 actions.push(a);
              }
-        },            requestTodo, createTodo({task})).done;
+        }, requestTodo, createTodo({task})).done;
 
         expect(actions.some(a => a.type === TodoActions.ADD_TODO && a.payload.todo.task === task)).toBeTruthy();
     });
