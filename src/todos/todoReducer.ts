@@ -6,12 +6,7 @@ import { LoadedTodoProvider } from "@App/todos/loadedTodoProvider";
 import { TodoReducer } from "@App/todos/abstractTodoReducer";
 
 export function todoReducer(state: TodoState = initialTodoState, action: AppActionType) {
-    let reducer: TodoReducer;
-    if (state.isLoading) {
-        reducer = new LoadingTodoProvider();
-    } else {
-        reducer = new LoadedTodoProvider(state);
-    }
+    const reducer = getTodoReducer(state);
     switch (action.type) {
         case TodoActions.LOAD_TODOS:
            return reducer.loadTodos(action.payload.todos);
@@ -25,5 +20,13 @@ export function todoReducer(state: TodoState = initialTodoState, action: AppActi
             return reducer.updateProgress(action.payload.hasProgress);
        default:
             return state;
+    }
+}
+
+function getTodoReducer(state: TodoState): TodoReducer {
+    if (state.isLoading) {
+        return new LoadingTodoProvider();
+    } else {
+        return new LoadedTodoProvider(state);
     }
 }

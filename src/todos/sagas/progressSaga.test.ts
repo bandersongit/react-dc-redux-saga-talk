@@ -79,4 +79,21 @@ describe('progress saga', () => {
 
         expect(notifyUser).not.toBeCalled();
     });
+
+    test("multiple showProgress calls should be respected", async () => {
+        const initialTodoId = "1";
+        const initialTodos: Todo[] = [
+            { task: "do something", isCompleted: false, id: initialTodoId }
+        ];
+
+        await testBuilder()
+            .dispatch(loadTodos({todos: initialTodos}))
+            .dispatch(toggleCompletion({id: initialTodoId}))
+            .dispatch(showProgress())
+            .dispatch(showProgress())
+            .dispatch(showProgress())
+            .silentRun();
+
+        expect(notifyUser).toHaveBeenCalledTimes(3);
+    });
 });

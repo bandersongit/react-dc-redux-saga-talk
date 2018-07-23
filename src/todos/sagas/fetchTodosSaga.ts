@@ -4,7 +4,7 @@ import { uniqueId } from 'lodash';
 import { delay } from 'redux-saga';
 
 export function* fetchTodos() {
-    yield call(delay, 100);
+    yield call(delay, 1000);
     yield put(loadTodos({
         todos: [
             { task: "write app", isCompleted: false, id: uniqueId() },

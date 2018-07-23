@@ -1,5 +1,5 @@
 import { TodoActions, loadTodos, hasProgress } from "@App/todos/todoActions";
-import { take, select, takeLatest, call, put } from "redux-saga/effects";
+import { take, select, takeLatest, put, call, takeEvery } from "redux-saga/effects";
 import { Todo } from "@App/todos/todoState";
 import { State } from "@App/store/appState";
 import { getTodoRepository } from "@App/todos/getTodoRepository";
@@ -30,8 +30,11 @@ function* showProgresSaga(progress: Todo[]) {
         return;
     }
 
-    yield take(TodoActions.SHOW_PROGRESS);
     const message = `Since you got here, you have completed the following tasks:\n${progress.map(t => t.task).join("\n")}`;
+    yield takeEvery(TodoActions.SHOW_PROGRESS, notifySaga, message);
+}
+
+function* notifySaga(message: string) {
     yield call(notifyUser, message);
 }
 
