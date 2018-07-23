@@ -5,6 +5,7 @@ import { State } from "@App/store/appState";
 import { getTodoRepository } from "@App/todos/getTodoRepository";
 import { difference } from "lodash";
 import { ITodoRepository } from "@App/todos/todoRepository";
+import { notifyUser } from "@App/todos/sagas/notifyUser";
 
 export function* progressSaga() {
     const initialTodos: ReturnType<typeof loadTodos> = yield take(TodoActions.LOAD_TODOS);
@@ -12,7 +13,7 @@ export function* progressSaga() {
     yield takeLatest(TodoActions.TOGGLE_COMPLETION, updateProgressSaga, initialTodos.payload.todos);
 }
 
-export function* updateProgressSaga(initialTodos: Todo[]) {
+function* updateProgressSaga(initialTodos: Todo[]) {
     const todoRepository: ITodoRepository = yield select<State>(getTodoRepository);
     const progress = computeProgress(initialTodos, todoRepository.readTodos());
     const hasMadeProgress = progress.length > 0;
@@ -31,7 +32,7 @@ function* showProgresSaga(progress: Todo[]) {
 
     yield take(TodoActions.SHOW_PROGRESS);
     const message = `Since you got here, you have completed the following tasks:\n${progress.map(t => t.task).join("\n")}`;
-    yield call(window.alert, message);
+    yield call(notifyUser, message);
 }
 
 // we define progress to be the set of todos that have been completed since we loaded the initial todos from the server

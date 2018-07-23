@@ -63,6 +63,5 @@ describe("create todo saga", () => {
                 .put(addTodo({todo: mockTodoFactory(task)}))
                 .silentRun();
         });
-
     });
 });
