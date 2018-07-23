@@ -1,28 +1,9 @@
-import { TodoState, initialTodoState, Todo } from "@App/todos/todoState";
+import { TodoState, initialTodoState } from "@App/todos/todoState";
 import { AppActionType } from "@App/store/actions";
 import { TodoActions } from "@App/todos/todoActions";
 import { LoadingTodoProvider } from "@App/todos/loadingTodoProvider";
 import { LoadedTodoProvider } from "@App/todos/loadedTodoProvider";
-
-export abstract class TodoReducer {
-    constructor() { return; }
-
-    loadTodos: (todos: Todo[]) => TodoState = () => {
-        throw "not implemented";
-    }    
-    addTodo: (todo: Todo) => TodoState = () => {
-        throw "not implemented";
-    }
-    removeTodo: (id: string) => TodoState = () => {
-        throw "not implemented";
-    }
-    toggleCompletion: (id: string) => TodoState = () => {
-        throw "not implemented";
-    }
-    updateProgress: (todos: Todo[]) => TodoState = () => {
-        throw "not implemented";
-    }
-}
+import { TodoReducer } from "@App/todos/abstractTodoReducer";
 
 export function todoReducer(state: TodoState = initialTodoState, action: AppActionType) {
     let reducer: TodoReducer;
@@ -40,6 +21,8 @@ export function todoReducer(state: TodoState = initialTodoState, action: AppActi
             return reducer.removeTodo(action.payload.id);
         case TodoActions.TOGGLE_COMPLETION:
             return reducer.toggleCompletion(action.payload.id);
+        case TodoActions.UPDATE_PROGRESS:
+            return reducer.updateProgress(action.payload.progress);
         default:
             return state;
     }

@@ -6,7 +6,8 @@ export enum TodoActions {
     ADD_TODO = "ADD_TODO",
     CREATE_TODO = "CREATE_TODO",
     REMOVE_TODO = "REMOVE_TODO",
-    TOGGLE_COMPLETION = "TOGGLE_COMPLETION"
+    TOGGLE_COMPLETION = "TOGGLE_COMPLETION",
+    UPDATE_PROGRESS = "UPDATE_PROGRESS"
 }
 
 export const loadTodos = makePayloadActionCreator<TodoActions.LOAD_TODOS, { todos: Todo[] }>(TodoActions.LOAD_TODOS);
@@ -14,3 +15,4 @@ export const createTodo = makePayloadActionCreator<TodoActions.CREATE_TODO, { ta
 export const addTodo = makePayloadActionCreator<TodoActions.ADD_TODO, { todo: Todo}>(TodoActions.ADD_TODO);
 export const removeTodo = makePayloadActionCreator<TodoActions.REMOVE_TODO, { id: string }>(TodoActions.REMOVE_TODO);
 export const toggleCompletion = makePayloadActionCreator<TodoActions.TOGGLE_COMPLETION, { id: string }>(TodoActions.TOGGLE_COMPLETION);
+export const updateProgress = makePayloadActionCreator<TodoActions.UPDATE_PROGRESS, { progress: Todo[] }>(TodoActions.UPDATE_PROGRESS);

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { Props, AddTodo } from './addTodo';
+import { Props, AddTodo } from '@App/components/todos/addTodo';
 import { Dispatch } from 'redux';
 import { AppActionType } from '@App/store/actions';
 import { createTodo } from '@App/todos/todoActions';
