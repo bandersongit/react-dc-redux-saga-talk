@@ -7,6 +7,6 @@ export async function createServerTodo(task: string): Promise<Todo> {
     return {
         task,
         isCompleted: false,
-        id: uniqueId()
+        id: uniqueId() + Math.random()
     };
 }

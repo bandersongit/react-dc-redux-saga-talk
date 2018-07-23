@@ -7,7 +7,7 @@ export abstract class TodoReducer {
     }
     loadTodos: (todos: Todo[]) => TodoState = () => {
         throw "not implemented";
-    }    
+    }
     addTodo: (todo: Todo) => TodoState = () => {
         throw "not implemented";
     }

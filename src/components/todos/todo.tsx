@@ -18,7 +18,7 @@ export class Todo extends React.PureComponent<Props> {
         return (
             <div style={todoStyles}>
                 <label>
-                    <input type="checkbox" checked={this.props.isCompleted} onClick={this.props.toggleCompletion}/>
+                    <input type="checkbox" checked={this.props.isCompleted} onChange={this.props.toggleCompletion}/>
                     {this.props.task}
                 </label>
                 <button onClick={this.props.removeTodo} style={{ marginLeft: "1em" }}>Remove</button>

@@ -8,7 +8,9 @@ export enum TodoActions {
     REMOVE_TODO = "REMOVE_TODO",
     TOGGLE_COMPLETION = "TOGGLE_COMPLETION",
     SHOW_PROGRESS = "SHOW_PROGRESS",
-    HAS_PROGRESS = "HAS_PROGRESS"
+    HAS_PROGRESS = "HAS_PROGRESS",
+    LOAD_TODOS_FROM_CACHE = "LOAD_TODOS_FROM_CACHE",
+    LOAD_TODOS_FROM_SERVER = "LOAD_TODOS_FROM_SERVER"
 }
 
 export const loadTodos = makePayloadActionCreator<TodoActions.LOAD_TODOS, { todos: Todo[] }>(TodoActions.LOAD_TODOS);
@@ -18,3 +20,5 @@ export const removeTodo = makePayloadActionCreator<TodoActions.REMOVE_TODO, { id
 export const toggleCompletion = makePayloadActionCreator<TodoActions.TOGGLE_COMPLETION, { id: string }>(TodoActions.TOGGLE_COMPLETION);
 export const showProgress = makeSimpleActionCreator<TodoActions.SHOW_PROGRESS>(TodoActions.SHOW_PROGRESS);
 export const hasProgress = makePayloadActionCreator<TodoActions.HAS_PROGRESS, { hasProgress: boolean}>(TodoActions.HAS_PROGRESS);
+export const loadTodosFromCache = makePayloadActionCreator<TodoActions.LOAD_TODOS_FROM_CACHE, { todos: Todo[] }>(TodoActions.LOAD_TODOS_FROM_CACHE);
+export const loadTodosFromServer = makePayloadActionCreator<TodoActions.LOAD_TODOS_FROM_SERVER, { todos: Todo[] }>(TodoActions.LOAD_TODOS_FROM_SERVER);

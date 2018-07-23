@@ -1,8 +1,9 @@
-import { ILoadedTodoState, Todo } from "@App/todos/todoState";
+import { ILoadedTodoState, Todo, TodoState } from "@App/todos/todoState";
 import { ITodoRepository } from "@App/todos/todoRepository";
 import { TodoReducer } from "@App/todos/abstractTodoReducer";
 
 export class LoadedTodoProvider extends TodoReducer implements ILoadedTodoState, ITodoRepository {
+    public progress: Todo[];
     public todos: Todo[];
     public hasProgress: boolean;
     public isLoading: false;
@@ -21,8 +22,12 @@ export class LoadedTodoProvider extends TodoReducer implements ILoadedTodoState,
     readTodos(): Todo[] {
         return this.todos;
     }
-    loadTodos = () => {
-        throw "cannot load todos multiple times";
+    loadTodos: (todos: Todo[]) => TodoState = (todos) => {
+        return new LoadedTodoProvider({
+            todos: todos,
+            hasProgress: false,
+            isLoading: false
+        });
     }
     getHasProgress = () => this.hasProgress;
     toggleCompletion = (id: string) => {
