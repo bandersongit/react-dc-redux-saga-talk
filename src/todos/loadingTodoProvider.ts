@@ -7,7 +7,7 @@ export class LoadingTodoProvider extends TodoReducer implements ILoadingTodoStat
     loadTodos: (todos: Todo[]) => TodoState = (todos) => {
         return new LoadedTodoProvider({
             todos: todos,
-            progress: [],
+            hasProgress: false,
             isLoading: false
         });
     }

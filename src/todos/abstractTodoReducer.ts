@@ -2,7 +2,9 @@ import { Todo, TodoState } from "@App/todos/todoState";
 
 export abstract class TodoReducer {
     constructor() { return; }
-
+    updateProgress: (hasProgress: boolean) => TodoState = () => {
+        throw "not implemented";
+    }
     loadTodos: (todos: Todo[]) => TodoState = () => {
         throw "not implemented";
     }    
@@ -13,9 +15,6 @@ export abstract class TodoReducer {
         throw "not implemented";
     }
     toggleCompletion: (id: string) => TodoState = () => {
-        throw "not implemented";
-    }
-    updateProgress: (todos: Todo[]) => TodoState = () => {
         throw "not implemented";
     }
 }

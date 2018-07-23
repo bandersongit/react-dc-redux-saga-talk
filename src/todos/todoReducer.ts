@@ -21,9 +21,9 @@ export function todoReducer(state: TodoState = initialTodoState, action: AppActi
             return reducer.removeTodo(action.payload.id);
         case TodoActions.TOGGLE_COMPLETION:
             return reducer.toggleCompletion(action.payload.id);
-        case TodoActions.UPDATE_PROGRESS:
-            return reducer.updateProgress(action.payload.progress);
-        default:
+        case TodoActions.HAS_PROGRESS:
+            return reducer.updateProgress(action.payload.hasProgress);
+       default:
             return state;
     }
 }
