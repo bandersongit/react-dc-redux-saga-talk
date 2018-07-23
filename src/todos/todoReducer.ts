@@ -4,19 +4,32 @@ import { TodoActions } from "@App/todos/todoActions";
 import { LoadingTodoProvider } from "@App/todos/loadingTodoProvider";
 import { LoadedTodoProvider } from "@App/todos/loadedTodoProvider";
 
-export interface ITodoReducer {
-    loadTodos: (todos: Todo[]) => TodoState;
-    addTodo: (todo: Todo) => TodoState;
-    removeTodo: (id: string) => TodoState;
-    toggleCompletion: (id: string) => TodoState;
+export abstract class TodoReducer {
+    constructor() { return; }
+
+    loadTodos: (todos: Todo[]) => TodoState = () => {
+        throw "not implemented";
+    }    
+    addTodo: (todo: Todo) => TodoState = () => {
+        throw "not implemented";
+    }
+    removeTodo: (id: string) => TodoState = () => {
+        throw "not implemented";
+    }
+    toggleCompletion: (id: string) => TodoState = () => {
+        throw "not implemented";
+    }
+    updateProgress: (todos: Todo[]) => TodoState = () => {
+        throw "not implemented";
+    }
 }
 
 export function todoReducer(state: TodoState = initialTodoState, action: AppActionType) {
-    let reducer: ITodoReducer;
+    let reducer: TodoReducer;
     if (state.isLoading) {
         reducer = new LoadingTodoProvider();
     } else {
-        reducer = new LoadedTodoProvider(state.todos);
+        reducer = new LoadedTodoProvider(state);
     }
     switch (action.type) {
         case TodoActions.LOAD_TODOS:

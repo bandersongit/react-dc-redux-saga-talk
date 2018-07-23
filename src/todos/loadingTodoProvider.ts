@@ -1,19 +1,14 @@
-import { ITodoReducer } from '@App/todos/todoReducer';
 import { ILoadingTodoState, Todo, TodoState } from '@App/todos/todoState';
 import { LoadedTodoProvider } from '@App/todos/loadedTodoProvider';
+import { TodoReducer } from '@App/todos/abstractTodoReducer';
 
-export class LoadingTodoProvider implements ITodoReducer, ILoadingTodoState {
+export class LoadingTodoProvider extends TodoReducer implements ILoadingTodoState {
     isLoading: true;
     loadTodos: (todos: Todo[]) => TodoState = (todos) => {
-        return new LoadedTodoProvider(todos);
-    }
-    toggleCompletion = () => { 
-        throw "cannot toggle completion of todos before todos have loaded!";
-    }
-    addTodo = () => {
-        throw "cannot add todos befoer todos have loaded";
-    }
-    removeTodo = () => {
-        throw "cannot remove todos before todos have loaded";
+        return new LoadedTodoProvider({
+            todos: todos,
+            progress: [],
+            isLoading: false
+        });
     }
 }

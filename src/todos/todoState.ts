@@ -8,6 +8,7 @@ export type TodoState = ILoadedTodoState | ILoadingTodoState;
 
 export interface ILoadedTodoState {
     readonly todos: Todo[];
+    readonly progress: Todo[];
     readonly isLoading: false;
 }
 
