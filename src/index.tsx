@@ -5,7 +5,7 @@ import '@App/index.css';
 import configureStore from '@App/store';
 import { Provider } from 'react-redux';
 import App from '@App/components/app/App';
-import { gatekeeper } from './gatekeeperGenerator';
+import { gatekeeper } from '@App/generatorDemos/gatekeeperGenerator';
 
 declare global {
   interface Window {
