@@ -10,7 +10,7 @@ import { notifyUser } from "@App/todos/sagas/notifyUser";
 export function* progressSaga() {
     const initialTodos: ReturnType<typeof loadTodos> = yield take(TodoActions.LOAD_TODOS);
     
-    yield takeLatest(TodoActions.TOGGLE_COMPLETION, updateProgressSaga, initialTodos.payload.todos);
+    yield takeLatest([TodoActions.TOGGLE_COMPLETION, TodoActions.REMOVE_TODO], updateProgressSaga, initialTodos.payload.todos);
 }
 
 function* updateProgressSaga(initialTodos: Todo[]) {
