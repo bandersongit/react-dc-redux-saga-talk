@@ -5,6 +5,15 @@ import '@App/index.css';
 import configureStore from '@App/store';
 import { Provider } from 'react-redux';
 import App from '@App/components/app/App';
+import { gatekeeper } from './gatekeeperGenerator';
+
+declare global {
+  interface Window {
+    gatekeeper: any;
+  }
+}
+
+window.gatekeeper = gatekeeper;
 
 let store = configureStore();
 
