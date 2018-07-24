@@ -9,6 +9,6 @@ export class LoadingTodoProvider extends TodoReducer implements ILoadingTodoStat
             todos: todos,
             hasProgress: false,
             isLoading: false
-        });
+        }).state;
     }
 }

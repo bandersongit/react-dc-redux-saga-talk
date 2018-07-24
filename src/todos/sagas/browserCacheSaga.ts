@@ -13,12 +13,13 @@ export function* storeTodos() {
     if (state.todos.isLoading) {
         return;
     }
-
-    localStorage.setItem("todos", JSON.stringify(state.todos.todos));
+    if (window.localStorage) {
+        localStorage.setItem("todos", JSON.stringify(state.todos.todos));
+    }
 }
 
 export function* loadTodosFromStorage() {
-    const todosString = localStorage.getItem("todos");
+    const todosString = window.localStorage && window.localStorage.getItem("todos");
     const todos: Todo[] = todosString ? JSON.parse(todosString) : [];
 
     yield put(loadTodosFromCache({ todos }));

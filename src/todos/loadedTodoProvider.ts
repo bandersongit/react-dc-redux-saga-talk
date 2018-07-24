@@ -2,56 +2,43 @@ import { ILoadedTodoState, Todo, TodoState } from "@App/todos/todoState";
 import { ITodoRepository } from "@App/todos/todoRepository";
 import { TodoReducer } from "@App/todos/abstractTodoReducer";
 
-export class LoadedTodoProvider extends TodoReducer implements ILoadedTodoState, ITodoRepository {
-    public progress: Todo[];
-    public todos: Todo[];
-    public hasProgress: boolean;
-    public isLoading: false;
-    constructor(state: ILoadedTodoState) {
+export class LoadedTodoProvider extends TodoReducer implements ITodoRepository {
+    public readonly state: ILoadedTodoState;
+
+    constructor (state: ILoadedTodoState) {
         super();
-        this.todos = state.todos;
-        this.hasProgress = state.hasProgress;
+        this.state = state;
     }
-    updateProgress = (hasProgress: boolean) => {
-        return new LoadedTodoProvider({
-            todos: this.todos,
-            hasProgress,
-            isLoading: false
-        });
-    }
+
     readTodos(): Todo[] {
-        return this.todos;
+        return this.state.todos;
     }
+
+    getHasProgress = () => this.state.hasProgress;
+
+    updateProgress = (hasProgress: boolean) => {
+        return new LoadedTodoProvider({ ...this.state, hasProgress }).state;
+    }
+
     loadTodos: (todos: Todo[]) => TodoState = (todos) => {
-        return new LoadedTodoProvider({
-            todos: todos,
-            hasProgress: false,
-            isLoading: false
-        });
+        return new LoadedTodoProvider({ ...this.state, todos }).state;
     }
-    getHasProgress = () => this.hasProgress;
+
     toggleCompletion = (id: string) => {
-        const todos = this.todos.map(t => t.id === id
+        const todos = this.state.todos.map(t => t.id === id
             ? {...t, isCompleted: !t.isCompleted}
             : t);
-        return new LoadedTodoProvider({
-            todos,
-            hasProgress: this.hasProgress,
-            isLoading: false
-        });
+        return new LoadedTodoProvider({ ...this.state, todos }).state;
     }
+
     addTodo = (todo: Todo) => {
-        return new LoadedTodoProvider({
-            todos: this.todos.concat(todo),
-            hasProgress: this.hasProgress,
-            isLoading: false
-        });
+        const todos = this.state.todos.concat(todo);
+        return new LoadedTodoProvider({ ...this.state, todos }).state;
     }
+
     removeTodo = (id: string) => {
-        return new LoadedTodoProvider({
-            todos: this.todos.filter(t => t.id !== id),
-            hasProgress: this.hasProgress,
-            isLoading: false
-        });
+        const todos = this.state.todos.filter(t => t.id !== id);
+
+        return new LoadedTodoProvider({ ...this.state, todos }).state;
     }
 }

@@ -51,7 +51,7 @@ describe('progress saga', () => {
         expect(todoState.hasProgress).toBe(false);
     });
 
-    test("load todos, complete server todos, show progress should notify user", async () => {
+    test("load todos, complete an initially loaded todo, show progress should notify user", async () => {
         const initialTodoId = "1";
         const initialTodos: Todo[] = [
             { task: "do something", isCompleted: false, id: initialTodoId }
