@@ -12,6 +12,9 @@ import { notifyUser } from '@App/todos/sagas/notifyUser';
 describe('progress saga', () => {
     afterEach((notifyUser as any).mockReset);
 
+    // override default timeout (250ms) to be 25ms as our saga runs forever, 
+    // we aren't doing any IO/delay nonsense, and we want our tests to be FAST
+    expectSaga.DEFAULT_TIMEOUT = 25; 
     const testBuilder = () => expectSaga(progressSaga)
             .withState(initialState)
             .withReducer(rootReducer);

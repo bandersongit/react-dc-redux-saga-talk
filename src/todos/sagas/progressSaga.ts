@@ -30,7 +30,7 @@ function* showProgresSaga(progress: Todo[]) {
         return;
     }
 
-    const message = `Since you got here, you have completed the following tasks:\n${progress.map(t => t.task).join("\n")}`;
+    const message = `Since you got here, you have completed the following tasks:\n${progress.map(t => "• " + t.task).join("\n")}`;
     yield takeEvery(TodoActions.SHOW_PROGRESS, notifySaga, message);
 }
 
