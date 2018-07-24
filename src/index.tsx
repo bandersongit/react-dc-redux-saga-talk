@@ -6,14 +6,17 @@ import configureStore from '@App/store';
 import { Provider } from 'react-redux';
 import App from '@App/components/app/App';
 import { gatekeeper } from '@App/generatorDemos/gatekeeperGenerator';
+import { positiveInts } from '@App/generatorDemos/positiveIntsGenerator';
 
 declare global {
   interface Window {
     gatekeeper: any;
+    positiveInts: any;
   }
 }
 
 window.gatekeeper = gatekeeper;
+window.positiveInts = positiveInts;
 
 let store = configureStore();
 
